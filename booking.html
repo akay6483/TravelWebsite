@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Kerala Travel</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Kerala Travel</a>
+        </nav>
+    </header>
+
+    <section class="container mt-4">
+        <h2>Book Your Kerala Travel</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="destinationSelect">Select Destination:</label>
+                <select id="destinationSelect" class="form-control">
+                    <option value="">Choose a destination...</option>
+                    <!-- Populate options dynamically from the sample listings data -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nameInput">Your Name:</label>
+                <input type="text" id="nameInput" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email Address:</label>
+                <input type="email" id="emailInput" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phoneInput">Phone Number:</label>
+                <input type="tel" id="phoneInput" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="messageTextarea">Additional Message (Optional):</label>
+                <textarea id="messageTextarea" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="priceOutput">Price:</label>
+                <span id="priceOutput"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Booking</button>
+        </form>
+    </section>
+
+    <footer class="mt-4 py-3 bg-light">
+        <div class="container text-center">
+            <p>&copy; 2024 Kerala Travel. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS, jQuery, and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        let listings = [
+            { name: 'Alleppey', description: 'Known for its backwaters, houseboat cruises, and serene beauty. Explore the mesmerizing backwaters of Alleppey.', price: '$100 - $200', image: 'https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQuhkxq2cdQoD6-tXjWIjgqru47Mp3o_Z5mgkT5bOb2RwxkS7p398joV5dMXzcsnyronQZ-3VDWdjjfUBfGfWU7iVr5u8mel77wRQnpZg' },
+            { name: 'Munnar', description: 'Famous for its tea plantations, misty hills, and scenic landscapes. Witness the sprawling tea estates and enjoy the cool climate of Munnar.', price: '$150 - $250', image: 'https://www.keralatourism.org/images/destination/large/munnar_20130327112252_1_1_1.jpg' },
+            { name: 'Kochi (Cochin)', description: 'A vibrant city with a mix of colonial architecture, beaches, and cultural attractions. Explore the historic Fort Kochi and witness the Chinese fishing nets.', price: '$50 - $150', image: '' },
+            { name: 'Kovalam', description: 'Renowned for its pristine beaches, lighthouse, and water sports activities. Relax on the golden sands of Kovalam Beach and indulge in water sports.', price: '$80 - $180', image: '' },
+            { name: 'Wayanad', description: 'Offers lush greenery, wildlife sanctuaries, and trekking trails amidst the Western Ghats. Explore the enchanting forests and wildlife of Wayanad.', price: '$120 - $220', image: 'https://www.keralatourism.org/images/destination/large/wayanad_20130327115505_2_1_1.jpg' },
+            { name: 'Thekkady', description: 'Home to the Periyar Wildlife Sanctuary, known for its elephant safaris and boating. Experience the thrill of wildlife spotting in Thekkady.', price: '$90 - $190', image: 'https://www.keralatourism.org/images/destination/large/thekkady_20130327112357_3_1_1.jpg' },
+            { name: 'Varkala', description: 'Features stunning cliff-side views, a beach, and a revered Janardanaswamy Temple. Relax amidst the scenic beauty of Varkala Beach and explore the ancient temples.', price: '$70 - $170', image: 'https://www.keralatourism.org/images/destination/large/varkala_20130327115830_4_1_1.jpg' },
+            { name: 'Kumarakom', description: 'Offers tranquil backwaters, bird watching, and luxury houseboat stays. Experience the serene backwaters of Kumarakom and enjoy bird watching.', price: '$120 - $220', image: 'https://www.keralatourism.org/images/destination/large/kumarakom_20130327112453_5_1_1.jpg' },
+            { name: 'Fort Kochi', description: 'Known for its historical landmarks, Dutch and Portuguese architecture, and art scene. Explore the historic landmarks and cultural richness of Fort Kochi.', price: '$60 - $160', image: 'https://www.keralatourism.org/images/destination/large/fort-kochi_20130327115954_19_1_1.jpg' },
+            { name: 'Athirappilly Waterfalls', description: 'One of the largest waterfalls in Kerala, surrounded by lush forests. Marvel at the majestic Athirappilly Waterfalls amidst the lush greenery.', price: '$40 - $140', image: 'https://www.keralatourism.org/images/destination/large/athirappilly_20130327115630_20_1_1.jpg' },
+            { name: 'Ponmudi', description: 'A hill station with winding roads, tea gardens, and scenic viewpoints. Enjoy the picturesque views and lush greenery of Ponmudi.', price: '$80 - $180', image: 'https://www.keralatourism.org/images/destination/large/ponmudi_20130327111947_21_1_1.jpg' },
+            { name: 'Marari Beach', description: 'A serene beach destination with swaying palm trees and pristine shores. Relax on the tranquil shores and enjoy the serenity of Marari Beach.', price: '$90 - $190', image: 'https://www.keralatourism.org/images/destination/large/marari-beach_20130327115802_22_1_1.jpg' },
+            { name: 'Kottayam', description: 'Famous for its scenic backwaters, religious sites, and rubber plantations. Explore the scenic backwaters and religious sites of Kottayam.', price: '$50 - $150', image: 'https://www.keralatourism.org/images/destination/large/kottayam_20130327112311_23_1_1.jpg' },
+            { name: 'Kumarakom Bird Sanctuary', description: 'A haven for bird watchers with diverse avian species. Witness the rich biodiversity and bird species of Kumarakom Bird Sanctuary.', price: '$30 - $130', image: 'https://www.keralatourism.org/images/destination/large/kumarakom-bird-sanctuary_20130327114048_24_1_1.jpg' },
+            { name: 'Thrissur', description: 'Known for its cultural festivals, ancient temples, and vibrant markets. Experience the rich cultural heritage and festivals of Thrissur.', price: '$70 - $170', image: 'https://www.keralatourism.org/images/destination/large/thrissur_20130327115701_25_1_1.jpg' },
+            { name: 'Poovar Island', description: 'Offers backwater cruises, golden sand beaches, and a tranquil environment. Relax amidst the scenic beauty and tranquility of Poovar Island.', price: '$100 - $200', image: 'https://www.keralatourism.org/images/destination/large/poovar_20130327112407_26_1_1.jpg' },
+            { name: 'Guruvayur', description: 'Home to the Guruvayur Temple, a major pilgrimage center for Hindus. Seek blessings at the revered Guruvayur Temple.', price: '$80 - $180', image: 'https://www.keralatourism.org/images/destination/large/guruvayoor_20130327113815_27_1_1.jpg' },
+            { name: 'Palakkad', description: 'Features lush green landscapes, historical monuments, and the Silent Valley National Park. Explore the natural beauty and historical monuments of Palakkad.', price: '$60 - $160', image: 'https://www.keralatourism.org/images/destination/large/palakkad_20130327112542_28_1_1.jpg' },
+            { name: 'Bekal', description: 'Known for its historic Bekal Fort, beautiful beaches, and backwaters. Explore the majestic Bekal Fort and serene beaches of Bekal.', price: '$70 - $170', image: 'https://www.keralatourism.org/images/destination/large/bekal_20130327112329_29_1_1.jpg' },
+            { name: 'Vagamon', description: 'A hill station with meadows, pine forests, and adventure sports like paragliding. Indulge in adventurous activities amidst the scenic beauty of Vagamon.', price: '$80 - $180', image: 'https://www.keralatourism.org/images/destination/large/vagamon_20130327113856_30_1_1.jpg' }
+        ];
+
+        // Populate destination select options
+        const destinationSelect = document.getElementById('destinationSelect');
+        listings.forEach((listing, index) => {
+            const option = document.createElement('option');
+            option.value = index;
+            option.textContent = listing.name;
+            destinationSelect.appendChild(option);
+        });
+
+        // Update price based on selected destination
+        destinationSelect.addEventListener('change', function() {
+            const selectedDestinationIndex = this.value;
+            if (selectedDestinationIndex !== "") {
+                const selectedDestination = listings[selectedDestinationIndex];
+                const priceOutput = document.getElementById('priceOutput');
+                priceOutput.textContent = `Price: ${selectedDestination.price}`;
+            } else {
+                document.getElementById('priceOutput').textContent = "";
+            }
+        });
+
+        // Booking form submission
+        document.getElementById('bookingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const selectedDestinationIndex = document.getElementById('destinationSelect').value;
+            const name = document.getElementById('nameInput').value;
+            const email = document.getElementById('emailInput').value;
+            const phone = document.getElementById('phoneInput').value;
+            const message = document.getElementById('messageTextarea').value;
+
+            // Validation can be added here
+
+            if (selectedDestinationIndex !== "" && name.trim() !== "" && email.trim() !== "" && phone.trim() !== "") {
+                const selectedDestination = listings[selectedDestinationIndex];
+                console.log("Booking Details:");
+                console.log("Destination: " + selectedDestination.name);
+                console.log("Price: " + selectedDestination.price);
+                console.log("Name: " + name);
+                console.log("Email: " + email);
+                console.log("Phone: " + phone);
+                console.log("Message: " + message);
+                alert("Your booking has been submitted successfully!");
+            } else {
+                alert("Please fill in all the required fields.");
+            }
+        });
+    </script>
+</body>
+</html>
