@@ -1,5 +1,6 @@
 ***Travel Website***
-Candidate webstie name: travel4you.com/compasservice.com ?
+webstie name: travelbuddy.com
 
 Description: 
-A basic travel website built using- html,css,js, incorporating bootstrap.
+A basic travel website built using- html,css,js,incorporating bootstrap.
+Planned to incorporate React js in phase 3.
