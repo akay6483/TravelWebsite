@@ -1,218 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Recommendations</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendations</title>
+    <link rel="stylesheet" href="assets/bootstrap-5.3.3-dist/css/bootstrap.min.css">
+    <style>
+@media screen and (max-width: 768px) {
+            .destination {
+                margin: 10px auto;
+                padding: 10px;
+            }
+            .destination h2 {
+                font-size: 20px;
+            }
+            .description p, .description a {
+                font-size: 16px;
+            }
+        }
+header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #176ca9;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            z-index: 1000; 
+            
+        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+button:hover {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+}
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  
- 
+a:hover {
+    text-decoration: underline; /* Underline link on hover */
+}
+
+img:hover {
+    transform: scale(1.1); /* Scale up image on hover */
+}
+
+
+.destination {
+    margin: 50px auto; /* Center align the destinations */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200%; /* Increase the width of each destination */
+    max-width: 2500px; /* Adjust the maximum width as needed */
+    background-color: #41b4e6; /* Add background color */
+}
+
+
+
+.destination h2 {
+    font-size: xx-large; /* Increase the font size of the place names */
+    text-align: center; /* Center align the place names */
+}
+.destination img {
+    display: block; /* Ensure images are treated as block elements */
+    margin: 0 auto; /* Center align the images */
+    width: 100%; /* Make images responsive */
+    max-width: 100%; /* Ensure images don't exceed their container's width */
+    border-radius: 10px;
+}
+.description {
+    margin-top: 10px;
+}
+.description p {
+    font-size: xx-large;
+}
+.description a {
+    font-size: xx-large;
+}
+.h1 {
+    font-size: 3rem; /* Responsive font size */
+    margin: 0; /* Remove default margin */
+    font-weight: bold; /* Make the header bold */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 2px; /* Add letter spacing */
+}
+.fixed-image {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999; /* Ensure images stay behind header */
+        }
+        .fixed-image.left {
+            left: 0;
+        }
+        .fixed-image.right {
+            right: 0;
+        }
+        .sticky-corner {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000; /* Ensure it's above other content */
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-top: 10px; /* Adjust top margin */
+            margin-left: 10px; /* Adjust left margin */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #7cc7f0;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+        
+</style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm bg-light">
-
-    <div class="container-fluid d-flex">
-        <span class="p-2 pt-3 m-2 bg-primary shadow-lg border-2 rounded-2 d-flex grow-1"><p class="text-light h3">Recommendation</p></span>
-
-        <span class="dispaly-2 rounded-2 text-bg-dark p-3 mx-5 d-flex grow-1">Tips, reviews and more.</span>
-
-        <ul class="navbar-nav">
-        <div class="d-flex">
-        <li class="nav-item justify-content-end"></li>
-            <div class="dropdown">
-                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown">
-                    Navigation
-                </button>
-            <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="index.html">Home</a></li>
-                <li><a class="dropdown-item" href="discover.html">Discover</a></li>
-                <li><a class="dropdown-item" href="bookings.html">Bookings</a></li>
-            </ul>
+    <script>
+        function toggleDropdown() {
+            var dropdownContent = document.getElementById("dropdownMenu").getElementsByClassName("dropdown-content")[0];
+            dropdownContent.style.display === "none" ? dropdownContent.style.display = "block" : dropdownContent.style.display = "none";
+        }
+    </script>
+    
+    <header><h1 style="font-size: xx-large;" >Travel Recommendations</h1>
+        <div class="dropdown" id="dropdownMenu">
+            <button class="dropbtn" onclick="toggleDropdown()">Menu</button>
+            <div class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="login.html" target="_blank">Login</a>
+                <a href="signup.html" target="_blank">Signup</a>
             </div>
-        </li>
         </div>
-        </ul>
-    </div>
-  </nav>
+    </header>
 
-
-
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-12 p-4 m-3 bg-light d-flex justify-content-center align-items-center">
-        <div class="col-lg-12 table-responsive-md pg-4 my-3">
-          <table class="table rounded-3">
-            <thead>
-              <span class="h4"><strong>Top destinations in the world</strong></span>
-            </thead>
-
-            <tbody>
-              <tr class="table-light rounded shadow-lg">
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Bali</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/bali.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">Bali is a living postcard, an Indonesian paradise that feels like a fantasy.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">London</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/london.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">rom Shoreditch’s swaggering style to Camden’s punky vibe and chic Portobello Road, London is many worlds in one.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Hanoi</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/cite-imperiale-d-hanoi.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">The charming Vietnamese capital has aged well, preserving the Old Quarter, monuments and colonial architecture.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Rome</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/rome.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">It’s nicknamed the Eternal City for a reason. In Rome, you can drink from a street fountain fed by an ancient aqueduct.</span>
-                </td>
-              </tr> 
-
-              <tr class="table-light rounded shadow-lg">
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Pairs</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/paris.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">Everyone who visits Paris for the first time probably has the same punchlist of major attractions to hit.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Cancun</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/cancun.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">It’s not just for spring-breakers. Cancun, with its golden beaches and perfect climate, is the premiere coastal destination in Mexico.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Crete</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/crete.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">Crete is the largest of the Greek islands and is a paradise for tourists seeking sunshine, beaches, and culture.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Hoi An</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/Hoi_An.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">This city on the central Vietnamese coast is a well-preserved example of the important Southeast Asian trading port.</span>
-                </td>
-              </tr>
-              <tr class="table-light rounded shadow-lg">
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">New Delhi</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/new-delhi.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">Laid out by British architect Edwin Lutyens, the Indian capital is a striking modern metropolis.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Istanbul</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/istanbul.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">Over the centuries, many cultures have added their mark to this prized piece of land</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Cusco</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/cusco.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">In this high-altitude melting pot of Amerindian and mestizo culture, you'll find extraordinary wonders.</span>
-                </td>
-                <td>
-                  <div class="mt-2 p-3 bg-light text-secondary rounded">
-                    <span class="h4">Bangkok</span>
-                  <img class="img-fluid" src="assets/img/outside_ind/bangkok.jpg" width="300" height="300">
-                  </div>
-                  <span class="dispaly-3">The restaurant and nightclub scenes here are among the best in the world.</span>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
+    
+    
+    <div class="destination">
+        <h1>Praia da Falesia</h1>
+        <img src="assets/img/international/prala.jpg" alt="Praia da Falesia">
+        <p style="font-size: x-large;font-style: italic;">Falésia Beach (Portuguese: Praia da Falésia, meaning Cliff Beach) is a beach in Albufeira, Algarve, southern Portugal. It has a cliff that begins in the Barranco das Belharucas Beach and extends to Vilamoura.</p>
+        <h2>Description</h2>
+        <hr>
+        <div class="description">
+            <p style="font-size: xx-large;">The beach is part of a continuous stretch of sand almost 6 km in length. It is flanked by a line of high cliffs in deep tones ranging from reds to whitish, in contrasting colours with the green of the pine groves above. At the western end, the cliff is high but soft, composed of sand and clay, so the rain wears away grooves and gullies. To the east, the cliff is gradually losing height, while remaining deeply eroded. It is this erosion that keeps the beach sandy. As a result, small cones of sand form at the base of these cliffs, where typical dune plants such as sea daffodils, sea bindweed, spiny thrift, Cretan trefoil and sea holly have taken root. These species intermingle with the more monotonously-coloured vegetation typically found on cliffs, which here mostly consist of Mediterranean saltbush.</p> 
+            <a  style="font-size: xx-large;" href="https://www.google.com/maps/place/Olhos+de+%C3%81gua,+Portugal" target="_blank">Explore on Google Maps</a>
         </div>
-      </div>
     </div>
-  </div>
 
-  <div class="container-md">
-    <div class="row">
-      <div class="col-lg-12 p-4 ms-4 my-4 bg-light rounded-4">
-        
-        <p class="h4 mx-auto p-3 text-bg-light">Beautiful beaches, record-breaking attractions and experiences like no other – Dubai is the place to be in 2024.</p>
-        
-        <div id="demo" class="carousel slide ms-3 ps-2" data-bs-ride="carousel">
+    <div class="destination">
+        <h2>Maldives</h2>
+        <img src="assets/img/international/MALDIVES.jpg" alt="maldives">
+        <p style="font-size: x-large;font-style: italic;">The name Maldives may also derive from Sanskrit माला mālā (garland) and द्वीप dvīpa (island),[24] or මාල දිවයින Maala Divaina ("Necklace Islands") in Sinhala.</p> 
+        <h2>Description</h2>
+        <hr>
+        <div class="description">
+            <p style="font-size: xx-large;">The Maldives,[c] officially the Republic of Maldives,[d] and historically known as Maldive Islands, is a country and archipelagic state in South Asia in the Indian Ocean.[9] The Maldives is named after the main island and capital, Malé. The Maldives is southwest of Sri Lanka and India, about 750 kilometres (470 miles; 400 nautical miles) from the Asian continent's mainland. The Maldives' chain of 26 atolls stretches across the equator from Ihavandhippolhu Atoll in the north to Addu Atoll in the south.
 
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="3"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="4"></button>
-          </div>
-          
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="assets/img/outside_ind/dubai1.jpg" class="d-block" style="width:1250px; height:500px">
-              <div class="carousel-caption">
-                <p>Dubai is a destination that mixes modern culture with history, adventure with world-class shopping and entertainment. </p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="assets/img/outside_ind/dubai2.jpg"  class="d-block" style="width:1250px; height: 500px;">
-              <div class="carousel-caption">
-                <p>Catch a show at the Dubai Opera, see downtown from atop the Burj Khalifa.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="assets/img/outside_ind/dubai3.jpg" class="d-block" style="width:1250px; height: 500px;">
-              <div class="carousel-caption">
-                <p>Spend an afternoon along Dubai Creek exploring the gold, textile and spice souks.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="assets/img/outside_ind/dubai4.jpg" class="d-block" style="width:1250px; height: 500px;">
-              <div class="carousel-caption">
-                <p>If you’re looking for thrills, you can float above the desert dunes in a hot air balloon.</p>
-              </div>
-            </div>
-            <div class="carousel-item">
-              <img src="assets/img/outside_ind/dubai5.jpg" class="d-block" style="width:1250px; height: 500px;">
-              <div class="carousel-caption">
-                <p>Climb aboard a high-speed ride at IMG Worlds of Adventure or skydive over the Palm Jumeirah.</p>
-              </div>
-            </div>
-          </div>
-          
-          <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
+                The Maldives is the smallest country in Asia. Including the sea, the territory spans roughly 90,000 square kilometres (35,000 sq mi), and a land area of 298 square kilometres (115 sq mi). The Maldives is one of the world's most geographically dispersed sovereign states, and the smallest Muslim-majority country by land area. With a population of 515,132 in the 2022 census, it is the 2nd least populous country in Asia and the ninth-smallest country in the world by area. Malé is the capital and the most populated city, traditionally called the "King's Island", where the ancient royal dynasties ruled from its central location.[10] The Maldivian Archipelago is located on the Chagos–Laccadive Ridge, a vast submarine mountain range in the Indian Ocean; this also forms a terrestrial ecoregion with the Chagos Archipelago and Lakshadweep.[11] The Maldives has an average ground-level elevation of 1.5 metres (4 ft 11 in) above sea level,[12] and a highest natural point of only 2.4 metres (7 ft 10 in), making it the world's lowest-lying country. Some sources state the highest point, Mount Villingili, as 5.1 metres or 17 feet.</p>
+    
+            <a style="font-size: xx-large;" href="https://www.google.com/maps/place/Machu+Picchu" target="_blank">Explore on Google Maps</a>
         </div>
-
-      </div>
     </div>
-  </div>
+    <div class="destination">
+        <h2>Mauritius</h2>
+        <img src="assets/img/international/MAURITUIS.jpg" alt="Mauritius">
+        <p style="font-size: x-large;font-style: italic;">The name Maldives may also derive from Sanskrit माला mālā (garland) and द्वीप dvīpa (island),[24] or මාල දිවයින Maala Divaina ("Necklace Islands") in Sinhala.</p> 
+        <h2>Description</h2>
+        <hr>
+        <div class="description">
+            <p  style="font-size: xx-large;">Mauritius,[a] officially the Republic of Mauritius,[b] is an island country in the Indian Ocean, about 2,000 kilometres (1,100 nautical miles) off the southeastern coast of East Africa, east of Madagascar. It includes the main island (also called Mauritius), as well as Rodrigues, Agaléga, and St. Brandon (Cargados Carajos shoals).[12][13] The islands of Mauritius and Rodrigues, along with nearby Réunion (a French overseas department), are part of the Mascarene Islands. The main island of Mauritius, where the population is concentrated, hosts the capital and largest city, Port Louis. The country spans 2,040 square kilometres (790 sq mi) and has an exclusive economic zone covering 2,300,000 square kilometres (670,000 square nautical miles).[14]
 
-      <footer class="footer py-4 bg-light">
+                It is believed Arab sailors first discovered the uninhabited island, around 975, naming it Dina Arobi.[15][16] In 1507, Portuguese sailors visited the uninhabited island with the island appearing with the Portuguese names Cirne or Do-Cerne on early Portuguese maps.[17] A Dutch fleet, under the command of Admiral Van Warwyck, landed at what is now the Grand Port District and took possession of the island in 1598, renaming the uninhabited islands after Maurice, Prince of Orange. A succession of short-lived Dutch attempts at permanent settlement took place over a century with the aim of exploiting the local ebony forests, establishing a consistent sugar and arrack production using cane plant cuttings imported from Java together with over three hundred Malagasy slaves, before abandoning their efforts.[18] France took the uninhabited island in 1715, renaming the island "Isle de France". In 1810, the United Kingdom seized the island, and four years later, under the Treaty of Paris, France ceded Mauritius and its dependencies to the United Kingdom. The British colony of Mauritius now included Rodrigues, Agaléga, St. Brandon, the Chagos Archipelago, and, until 1906, the Seychelles.[12][13] Mauritius and France dispute sovereignty over the island of Tromelin, as the treaty failed to mention it specifically.[19] Mauritius became the British Empire's main sugar-producing colony and remained a primarily sugar-dominated plantation-based colony until independence, in 1968.</p>
+            <a  style="font-size: xx-large;" href="https://www.google.com/maps/place/Mauritius" target="_blank">Explore on Google Maps</a>
+        </div>
+    </div>
+    <div class="destination">
+        <h2>France</h2>
+        <img src="assets/img/international/FRANCE.jpg" alt="Mauritius">
+        <p style="font-size: x-large;font-style: italic;">In English, 'France' is pronounced /fræns/ FRANSS in American English and /frɑːns/ FRAHNSS or /fræns/ FRANSS in British English.</p> 
+        <h2>Description</h2>
+        <hr>
+        <div class="description">
+            <p  style="font-size: xx-large;">France,[a] officially the French Republic,[b] is a country located primarily in Western Europe. It also includes overseas regions and territories in the Americas and the Atlantic, Pacific and Indian oceans,[XII] giving it one of the largest discontiguous exclusive economic zones in the world. Metropolitan France shares borders with Belgium and Luxembourg to the north, Germany to the north east, Switzerland to the east, Italy and Monaco to the south east, Andorra and Spain to the south, and a maritime border with the United Kingdom to the north west. Its metropolitan area extends from the Rhine to the Atlantic Ocean and from the Mediterranean Sea to the English Channel and the North Sea. Its overseas territories include French Guiana in South America, Saint Pierre and Miquelon in the North Atlantic, the French West Indies, and many islands in Oceania and the Indian Ocean. Its eighteen integral regions (five of which are overseas) span a combined area of 643,801 km2 (248,573 sq mi) and have a total population of 68.4 million as of January 2024.[5][8] France is a unitary semi-presidential republic with its capital in Paris, the country's largest city and main cultural and commercial centre; other major urban areas include Marseille, Lyon, Toulouse, Lille, Bordeaux, Strasbourg, Nantes and Nice.
+
+                Metropolitan France was settled during the Iron Age by Celtic tribes known as Gauls before Rome annexed the area in 51 BC, leading to a distinct Gallo-Roman culture. In the Early Middle Ages, the Germanic Franks formed the Kingdom of Francia, which became the heartland of the Carolingian Empire. The Treaty of Verdun of 843 partitioned the empire, with West Francia evolving into the Kingdom of France. In the High Middle Ages, France was a powerful but decentralized feudal kingdom, but from the mid-14th to the mid-15th centuries, France was plunged into a dynastic conflict with England known as the Hundred Years' War. In the 16th century, the French Renaissance saw culture flourish and a French colonial empire rise.[14] Internally, France was dominated by the conflict with the House of Habsburg and the French Wars of Religion between Catholics and Huguenots. France was successful in the Thirty Years' War and further increased its influence during the reign of Louis XIV.</p>
+            <a  style="font-size: xx-large;" href="https://www.google.com/maps/place/Mauritius" target="_blank">Explore on Google Maps</a>
+        </div>
+    </div>
+    <div class="destination">
+        <h2>DUBAI</h2>
+        <img src="assets/img/international/DUBAI_1.jpg" alt="Mauritius">
+        <p style="font-size: x-large;font-style: italic;">Dubai (/duːˈbaɪ/, doo-BY; Arabic: دبي, romanized: Dubayy, IPA: [dʊˈbajj], Gulf Arabic pronunciation: [dəˈbaj]) is the most populous city in the United Arab Emirates (UAE) and the capital of the Emirate of Dubai, the most populated of the country's seven emirates.[7][8][9]</p> 
+        <h2>Description</h2>
+        <hr>
+        <div class="description">
+            <p  style="font-size: xx-large;">Established in the 19th century as a small fishing village, Dubai grew into a regional trading hub in the early 20th century and grew rapidly in the late 20th and early 21st centuries with a focus on tourism and luxury.[10] It has the second-most five-star hotels in the world[11] and boasts the tallest building in the world, the Burj Khalifa, which is 828 metres (2,717 ft) tall.
+
+                In the eastern Arabian Peninsula, on the coast of the Persian Gulf,[12] it is a major global transport hub for passengers and cargo.[13] Oil revenue helped accelerate the development of the city, which was already a major mercantile hub.
+                
+                Dubai has been a center for regional and international trade since the early 20th century, and its economy relies on revenues from trade, tourism, aviation, real estate, and financial services.[14][15][16][17] Oil production contributed less than 1 percent of the emirate's GDP in 2018.[18] The city has a population of around 3.60 million (as of 2022).Many theories have been proposed as to the origin of the word "Dubai". One theory suggests the word used to be the souq in Ba.[20] An Arabic proverb says "Daba Dubai" (Arabic: دبا دبي), meaning "They came with a lot of money."[21]
+
+                According to Fedel Handhal, a scholar on the UAE's history and culture, the word Dubai may have come from the word dabba (Arabic: دب) (a past tense derivative of yadub (Arabic: يدب), which means "to creep"), referring to the slow flow of Dubai Creek inland.
+                
+                The poet and scholar Ahmad Mohammad Obaid traces it to the same word, but to its alternative meaning of "baby locust" (Arabic: جراد) due to the abundance of locusts in the area before settlement.</p>
+            <a  style="font-size: xx-large;" href="https://www.google.com/maps/place/Mauritius" target="_blank">Explore on Google Maps</a>
+        </div>
+    </div>
+    <div class="sticky-corner">
+        <p style="font-family: Georgia, 'Times New Roman', Times, serif;">INTERNATIONAL TOUR PACKAGES AVAILABLE<br>FOR EXCITING OFFERS!!! </p>
+    </div>
+
+    <footer class="footer py-4 bg-info">
         <div class="row align-items-center">
-          <div class="col-lg-3 text-lg-start">Copyright &copy;travelbuddy.com</div>
+          <div class="col-lg-3 text-lg-start border-end border-dark">Copyright &copy;travelbuddy.com</div>
           
-          <div class="col-lg-3">
+          <div class="col-lg-3 border-end border-dark">
             
             <nav class="navbar">  
               <ul class="navbar-nav">
@@ -224,7 +258,7 @@
               </ul>
             </nav>
           </div>
-          <div class="col-lg-3 text-lg-start">
+          <div class="col-lg-3 text-lg-start border-end border-dark">
             <nav class="navbar">  
             <ul class="navbar-nav">
               <strong>Useful Links</strong>
@@ -242,18 +276,19 @@
             <ul class="navbar-nav">
               <strong>Travel Buddy</strong>
               <li class="nav-item"><a class="nav-link link-dark text-decoration-none me-3" href="discover.html">Discover</a></li>
-              <li class="nav-item"><a class="nav-link link-dark text-decoration-none" href="recom.html">Recommendation</a></li>
+              <li class="nav-item"><a class="nav-link link-dark text-decoration-none" href="explore.html">Explore</a></li>
               <li class="nav-item"><a class="nav-link link-dark text-decoration-none" href="bookings.html">Bookings</a></li>
               <li class="nav-item"><a class="nav-link link-dark text-decoration-none" href="user.html">User</a></li>
               <li class="nav-item"><a class="nav-link link-dark text-decoration-none" href="admin.html">Admin</a></li>
               </ul>
             </nav>
           </div>
-          </div>
-        </div>
-      </footer>
+      </div>
+          
+          
+      </div>
+    </footer>
 
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="javascript" href="assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js">
 </body>
 </html>
