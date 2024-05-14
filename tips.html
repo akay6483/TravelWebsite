@@ -1,0 +1,183 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Recommendations</title>
+    <style>
+        /* CSS styles can go here */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .destination {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        .destination h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        .destination p {
+            margin-bottom: 10px;
+            color: #666;
+        }
+        .destination .actions {
+            text-align: right;
+        }
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto; /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 8px;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Travel Recommendations</h1>
+        <div id="recommendations">
+            <!-- Recommendations will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <!-- Sample modal for more details -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Destination Name</h2>
+            <p id="modal-description">Destination Description</p>
+            <p><strong>Rating:</strong> <span id="modal-rating">4.5</span></p>
+            <p><strong>Price:</strong> <span id="modal-price">$500</span></p>
+            <button class="btn">Book Now</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript code for dynamic loading and modal functionality can go here
+        document.addEventListener("DOMContentLoaded", function() {
+            // Sample data (replace with actual data fetching)
+            var destinations = [
+                { name: "Paris", description: "The City of Love", rating: 4.5, price: "$500" },
+                { name: "New York", description: "The Big Apple", rating: 4.2, price: "$600" },
+                { name: "Tokyo", description: "The Capital of Japan", rating: 4.7, price: "$700" },
+                { name: "Rome", description: "The Eternal City", rating: 4.3, price: "$550" }
+            ];
+
+            var recommendationsContainer = document.getElementById('recommendations');
+
+            // Function to generate destination HTML
+            function generateDestinationHTML(destination) {
+                return `
+                    <div class="destination">
+                        <h2>${destination.name}</h2>
+                        <p>${destination.description}</p>
+                        <div class="actions">
+                            <button class="btn view-details" data-name="${destination.name}" data-description="${destination.description}" data-rating="${destination.rating}" data-price="${destination.price}">View Details</button>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // Function to handle view details button click
+            function handleViewDetailsClick(event) {
+                var destinationName = event.target.getAttribute('data-name');
+                var destinationDescription = event.target.getAttribute('data-description');
+                var destinationRating = event.target.getAttribute('data-rating');
+                var destinationPrice = event.target.getAttribute('data-price');
+
+                document.getElementById('modal-title').textContent = destinationName;
+                document.getElementById('modal-description').textContent = destinationDescription;
+                document.getElementById('modal-rating').textContent = destinationRating;
+                document.getElementById('modal-price').textContent = destinationPrice;
+
+                // Show modal
+                modal.style.display = "block";
+            }
+
+            // Render recommendations
+            destinations.forEach(function(destination) {
+                recommendationsContainer.innerHTML += generateDestinationHTML(destination);
+            });
+
+            // Modal
+            var modal = document.getElementById('modal');
+            var closeButton = document.getElementsByClassName('close')[0];
+
+            // Close modal when clicking on close button or outside modal
+            closeButton.addEventListener('click', function() {
+                modal.style.display = "none";
+            });
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            };
+
+            // Event delegation for view details buttons
+            recommendationsContainer.addEventListener('click', function(event) {
+                if (event.target.classList.contains('view-details')) {
+                    handleViewDetailsClick(event);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
