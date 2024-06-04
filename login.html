@@ -83,7 +83,7 @@
             var email = document.getElementById('email').value;
             var password = document.getElementById('password').value;
 
-            // Basic validation for email format
+    
             var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
                 alert('Please enter a valid email address.');
@@ -91,14 +91,14 @@
                 return;
             }
 
-            // Check password length (example of additional validation)
+    
             if (password.length < 6) {
                 alert('Password must be at least 6 characters long.');
                 event.preventDefault();
                 return;
             }
 
-            // Further validation logic can be added here
+        
 
             alert('Form submitted successfully!');
         });
