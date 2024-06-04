@@ -64,18 +64,44 @@
 </head>
 <body>
     <div class ="CONTAINER"> 
-        <form action="">
+        <form id="loginForm" action="">
             <div class="form-group">
-                <label for="" >EMAIL ID </label>
-                <input type="text" class ="form-control" required>
+                <label for="email">EMAIL ID </label>
+                <input type="email" id="email" class ="form-control" required>
             </div>
             <div class="form-group">
-                <label for="">PASSWORD</label>
-                <input type ="password" class ="form-control" required>
+                <label for="password">PASSWORD</label>
+                <input type="password" id="password" class ="form-control" required minlength="6">
             </div>
             <hr>
             <input type="submit" class ="btn" value ="LOGIN">
         </form>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('password').value;
+
+            // Basic validation for email format
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                event.preventDefault();
+                return;
+            }
+
+            // Check password length (example of additional validation)
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                event.preventDefault();
+                return;
+            }
+
+            // Further validation logic can be added here
+
+            alert('Form submitted successfully!');
+        });
+    </script>
 </body>
 </html>
